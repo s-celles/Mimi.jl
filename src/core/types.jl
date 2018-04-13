@@ -86,10 +86,9 @@ struct Dimension <: AbstractDimension
     dict::OrderedDict
     key_type::DataType
 
-    function Dimension(keys::Vector)
-        key_type = eltype(keys)
-        dict = OrderedDict{key_type, Int64}(collect(zip(keys, 1:length(keys))))
-        return new(dict, key_type)
+    function Dimension(keys::Vector{T}) where T
+        dict = OrderedDict{T, Int64}(collect(zip(keys, 1:length(keys))))
+        return new(dict, T)
     end
 
     function Dimension(rng::Range)
