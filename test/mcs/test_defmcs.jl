@@ -3,8 +3,6 @@ using Distributions
 
 include("../../examples/tutorial/02-two-region-model/main.jl")
 
-m = tworegion.tutorial
-
 mcs = @defmcs begin
     # Define random variables. The rv() is required to disambiguate an
     # RV definition name = Dist(args...) from application of a distribution
@@ -44,6 +42,6 @@ N = 100
 generate_trials!(mcs, N, filename="/tmp/trialdata.csv")
 
 # Run trials 1:N, and save results to the indicated directory
-run_mcs(m, mcs, N, output_dir="/tmp/Mimi")
+run_mcs(model, mcs, N, output_dir="/tmp/Mimi")
 
-# run_mcs(m, mcs, N, post_trial_func=print_result, output_dir="/tmp/Mimi")
+# run_mcs(model, mcs, N, post_trial_func=print_result, output_dir="/tmp/Mimi")
