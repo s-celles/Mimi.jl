@@ -30,3 +30,11 @@ function explore(model; title = "Electron")
     return w
 
 end
+
+function Base.getindex(w::Electron.Window)
+
+    code = "voyagerInstance.getSpec(true)"
+    content = run(w, code)    
+    return VegaLite.VLSpec{:plot}(content)
+
+end
